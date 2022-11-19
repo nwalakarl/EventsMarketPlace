@@ -31,17 +31,14 @@ namespace EventsMarketPlace
         static void Main(string[] args)
         {
             
-
-            Console.WriteLine("Hello, World!");
-
-            Console.WriteLine("Welcome to our Ticketing System");
+            Console.WriteLine("Welcome to our Event Management System");
             Console.WriteLine("-------------------------------\n");
 
             int option = -1;
 
             while (option != 0)
             {
-                // Display ticketing system action options.
+                // Display Event Management System action options.
                 Console.WriteLine("Choose an option from the following list:");
                 Console.WriteLine("\t1 - View all customers");
                 Console.WriteLine("\t2 - View all events");
