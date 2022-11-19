@@ -74,7 +74,7 @@ namespace EventsMarketPlace
 
         static void EmailEvents(int? option)
         {
-            if (option > 2)
+            if (option > 3)
             {
 
                 // Prompt to enter customer name.
@@ -85,7 +85,7 @@ namespace EventsMarketPlace
 
                 if (customer == null)
                 {
-                    Console.WriteLine($"{customerName} not found.");
+                    Console.WriteLine($"{customerName}, Not found.");
                     return;
                 }
                 
@@ -214,6 +214,7 @@ namespace EventsMarketPlace
                     return 0;
                 }
 
+                // Computes a bidirectional key for the cache.
                 string[] citiesArray = { fromCity, toCity };
 
                 Array.Sort(citiesArray, (x, y) => x.CompareTo(y));
@@ -224,7 +225,6 @@ namespace EventsMarketPlace
                 {
                     return CachedDistances[distanceCacheKey];
                 }
-
 
                 return AlphabeticalDistance(fromCity, toCity);
             }
@@ -278,7 +278,6 @@ namespace EventsMarketPlace
 
         public static Customer? GetCustomerByName(string customerName)
         {
-
             Customer? customer = customers.FirstOrDefault(c => c.Name.ToLower() == customerName.ToLower());
 
             return customer;
@@ -345,7 +344,7 @@ namespace EventsMarketPlace
         public string City { get; set; }
     }
 
-    public class Customer: IComparable<Customer>
+    public class Customer:IComparable<Customer>
     {
         public string Name { get; set; }
         public string City { get; set; }
