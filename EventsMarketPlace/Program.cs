@@ -178,28 +178,7 @@ namespace EventsMarketPlace
         public static List<Event> GetNClosestEvents(string customerCity, List<Event> events, int n = 5)
         {
             List<Event> result = new List<Event>();
-
-            /***********************************************************************************
-            * 
-            * Approach 1: 
-            * 
-            * var eventDistance = new List<EventDistance>();
-            * 
-            * foreach (Event item in events)
-            * {
-            *       if (!eventDistance.Any(e => e.Event.City == item.City))
-            *       {
-            *           var distance = GetDistance(item.City, customer.City);
-            *
-            *           eventDistance.Add(new EventDistance() { Event = item, Distance = distance });
-            *       }
-            * }               
-            *
-            * result = eventDistance.OrderBy(e => e.Distance).Select(e => e.Event).Take(5).ToList();
-            * 
-            *              
-            */
-
+                       
             PriorityQueue<Event, int> priorityQueue = new PriorityQueue<Event, int>();
 
             foreach (Event e in events)
