@@ -1,5 +1,5 @@
 # EventsMarketPlace
-Email campaign C# .Net 6.0 Application app for managing the sale of live tickets. 
+Email campaign C# .Net 6.0 Application for managing the sale of live event tickets. 
 
 ---
 
@@ -26,7 +26,7 @@ Iterating through the Events list and *selecting* only the events that are in th
 ```
 2.	**How would you call the AddToEmail method in order to send the events in an email?**
 ```C#
-List<Event> events = DataServices.GetEventsByCity(customer.City);
+List<Event> events = GetEventsByCity(customer.City);
 
 events.Sort(new EventPriceComparer());
 
@@ -38,8 +38,8 @@ foreach (var item in events)
                    
 ```
 3.	**What is the expected output if we only have the client John Smith?** 
-- If John Smith belongs to a city with an Event record, those cities will be listed and sorted by Price.
-- Although this depends on requirements, for a scenario where John Smith's city does not have an Event, top affordable events should be listed instead of the expected empty array.
+- For a scenario where John Smith is **NOT** a customer, a "Not Found" response is returned.
+- An alternative will be to list top affordable events.
 4.	**Do you believe there is a way to improve the code you first wrote?** 
 The code can be improved by any of the following:
 - By adding a `Price` field to the `Event` class and reducing the overhead of computing it each time the email is sent.
@@ -75,10 +75,12 @@ while (count < n)
 
 ```
 3.	**What is the expected output if we only have the client John Smith?**
-If we only have John Smith, then the *distance* would be computed only once and maybe made a part of the `Event` class as a property. 
+If John Smith is a customer, then the *distance* would be computed only once and maybe made a part of the `Event` class as a property. 
+- For a scenario where John Smith is **NOT** a customer, a "Not Found" response is returned.
+- An alternative will be to list top affordable events.
 
 4.	**Do you believe there is a way to improve the code you first wrote?**
-The above code can be made more efficient by caching the computed distances using the Cities as key. This is done in the `GetDistance()` method.
+The above code can be made more efficient by caching, using a `Dictionary`, the computed distances using the Cities as key. This is done in the `GetDistance()` method.
 
 
 C.	**If the GetDistance method is an API call which could fail or is too expensive, how will uimprove the code written in 2? Write the code.** 
@@ -178,7 +180,7 @@ public class EventDistanceComparer:IComparer<Event>
 }
 ```
 F. **One of the questions is: how do you verify that what you’ve done is correct.**
-By using TDD. This approach is used for this task using `TicketingSystem` Project. More tests can be written based on the requirements from the business.
+By using TDD. This approach can be used based on the requirements from the business.
 
 
 
